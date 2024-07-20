@@ -4,6 +4,9 @@
 
 @import "../styles/dark-theme.css";
 
+@import "@liveblocks/react-ui/styles.css";
+@import "@liveblocks/react-lexical/styles.css";
+
 /* ========================================== TAILWIND STYLES */
 @layer base {
   :root {
