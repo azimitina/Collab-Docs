@@ -13,7 +13,7 @@ const fontSans = FontSans({
 });
 
 export const metadata: Metadata = {
-  title: "Collab Docs",
+  title: "Google Docs",
   description: "Your collaborative docs",
 };
 export default function RootLayout({ children }: { children: ReactNode }) {

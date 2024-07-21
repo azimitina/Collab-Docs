@@ -11,3 +11,8 @@ declare type CreateDocumentParams = {
 };
 
 declare type RoomAccesses = Record<string, AccessType>;
+
+declare type AddDocumentBtnProps = {
+  userId: string;
+  email: string;
+};
