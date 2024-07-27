@@ -27,3 +27,14 @@ declare type CollaborativeRoomProps = {
   users: User[];
   currentUserType: UserType;
 };
+
+declare type User = {
+  id: string;
+  name: string;
+  email: string;
+  avatar: string;
+  color: string;
+  userType?: UserType;
+};
+
+declare type ThreadWrapperProps = { thread: ThreadData<BaseMetadata> };
