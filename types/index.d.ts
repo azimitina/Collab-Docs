@@ -20,3 +20,10 @@ declare type AddDocumentBtnProps = {
   userId: string;
   email: string;
 };
+
+declare type CollaborativeRoomProps = {
+  roomId: string;
+  roomMetadata: RoomMetadata;
+  users: User[];
+  currentUserType: UserType;
+};
