@@ -75,3 +75,21 @@ export const updateDocumentTitle = async (roomId: string, title: string) => {
     console.log(`Error happened while updating a room title: ${error}`);
   }
 };
+
+export const getAllDocuments = async (email: string) => {
+  try {
+    const rooms = await liveblocks.getRooms({ userId: email });
+
+    // const hasAccess = Object.keys(room.usersAccesses).includes(userId);
+
+    // if (!hasAccess) {
+    //   throw new Error(
+    //     "Access to this document is not permitted for the current user"
+    //   );
+    // }
+
+    return parseStringify(rooms);
+  } catch (error) {
+    console.log(`Error happened while getting all rooms: ${error}`);
+  }
+};
