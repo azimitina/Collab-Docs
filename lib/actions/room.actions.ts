@@ -81,14 +81,6 @@ export const getAllDocuments = async (email: string) => {
   try {
     const rooms = await liveblocks.getRooms({ userId: email });
 
-    // const hasAccess = Object.keys(room.usersAccesses).includes(userId);
-
-    // if (!hasAccess) {
-    //   throw new Error(
-    //     "Access to this document is not permitted for the current user"
-    //   );
-    // }
-
     return parseStringify(rooms);
   } catch (error) {
     console.log(`Error happened while getting all rooms: ${error}`);
@@ -111,7 +103,21 @@ export const updateDocumentAccess = async ({
     });
 
     if (room) {
-      console.log("add it later");
+      const notificationId = nanoid();
+
+      await liveblocks.triggerInboxNotification({
+        userId: email,
+        kind: "$documentAccess",
+        subjectId: notificationId,
+        activityData: {
+          userType,
+          title: `You have been granted ${userType} access to the document by ${updatedBy.name}`,
+          updatedBy: updatedBy.name,
+          avatar: updatedBy.avatar,
+          email: updatedBy.email,
+        },
+        roomId,
+      });
     }
 
     revalidatePath(`/documents/${roomId}`);

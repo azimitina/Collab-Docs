@@ -1,6 +1,7 @@
 import AddDocumentBtn from "@/components/AddDocumentBtn";
 import { DeleteModal } from "@/components/DeleteModal";
 import Header from "@/components/Header";
+import Notifications from "@/components/Notifications";
 import { getAllDocuments } from "@/lib/actions/room.actions";
 import { dateConverter } from "@/lib/utils";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
@@ -17,11 +18,12 @@ const Home = async () => {
     clerkUser.emailAddresses[0].emailAddress
   );
 
+  console.log("allDocuments"), allDocuments;
   return (
     <main className="home-container">
       <Header className="sticky left-0 top-0">
         <div className="flex items-center gap-2 lg:gap-4">
-          Notification
+          <Notifications />
           <SignedOut>
             <SignInButton />
           </SignedOut>
@@ -30,7 +32,7 @@ const Home = async () => {
           </SignedIn>
         </div>
       </Header>
-      {allDocuments.data.length > 0 ? (
+      {allDocuments?.data.length > 0 ? (
         <div className="document-list-container">
           <div className="document-list-title">
             <h3 className="text-28-semibold">All documents</h3>

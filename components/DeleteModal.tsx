@@ -18,7 +18,7 @@ import {
 
 import { Button } from "./ui/button";
 
-export const DeleteModal = ({ roomId }) => {
+export const DeleteModal = ({ roomId }: { roomId: string }) => {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
